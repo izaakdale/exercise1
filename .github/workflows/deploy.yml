@@ -1,7 +1,7 @@
 name: Deploy and test application
 on: push
 jobs:
-  test:
+  lint-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Get code from repo
@@ -17,6 +17,7 @@ jobs:
       - name: Run Tests
         run: npm test
   deploy:
+    needs: lint-and-test
     runs-on: ubuntu-latest
     steps:
       - name: Get code from repo
